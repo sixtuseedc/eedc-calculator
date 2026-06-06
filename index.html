@@ -1,64 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nigeria Electricity Units Calculator 2026 - EEDC, IKEDC, AEDC, EKEDC</title>
-<meta name="description" content="Free calculator for all Nigerian DisCos. Check EEDC, Ikeja Electric, AEDC, Eko Electric units for ₦1000, ₦5000. NERC 2026 tariffs for Lagos, Abuja, Onitsha, Kano, PH.">
-<meta name="google-site-verification" content="pBVBpKrGmas6Egqhkdn1viPzZicllXxl1c5BdIQrQHE" />
-<style>
-body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 700px; margin: 0 auto; padding: 20px; background: #f5f5f5; color: #333;}
-.card {background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
-h1 {color: #1a73e8; font-size: 28px; margin-bottom: 10px;}
-select, input {width: 100%; padding: 14px; margin: 10px 0; font-size: 16px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;}
-button {width: 100%; background: #1a73e8; color: white; padding: 15px; font-size: 18px; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px;}
-button:hover {background: #1557b0;}
-#result {margin-top: 20px; padding: 15px; background: #e8f0fe; border-left: 4px solid #1a73e8; font-size: 20px; font-weight: bold; display: none;}
-.note {font-size: 13px; color: #666; margin-top: 20px; line-height: 1.6;}
-.footer {text-align: center; margin-top: 30px; font-size: 14px; color: #666;}
-label {font-weight: 600; display: block; margin-top: 15px;}
-</style>
-</head>
-<body>
-<div class="card">
-<h1>Nigeria Electricity Units Calculator 2026</h1>
-<p>Calculate how many units/kWh you’ll get on your prepaid meter. Covers all 11 DisCos. <strong>EEDC rates shown by default.</strong></p>
-
-<label for="discoCompany">1. Select Your Electricity Provider / State:</label>
-<select id="discoCompany" onchange="updateBands()">
-<option value="EEDC" style="font-weight:bold;">**EEDC - Anambra, Enugu, Ebonyi, Abia, Imo**</option>
-<option value="IKEDC">Ikeja Electric - Lagos Mainland</option>
-<option value="EKEDC">Eko Electric - Lagos Island, Lekki, VI</option>
-<option value="AEDC">AEDC - Abuja, Kogi, Niger, Nasarawa</option>
-<option value="PHED">PHED - Rivers, Bayelsa, Cross River, Akwa Ibom</option>
-<option value="IBEDC">IBEDC - Oyo, Ogun, Osun, Kwara</option>
-<option value="KEDCO">KEDCO - Kano, Katsina, Jigawa</option>
-<option value="JED">JED - Plateau, Benue, Bauchi, Gombe</option>
-<option value="KAEDCO">KAEDCO - Kaduna, Sokoto, Kebbi, Zamfara</option>
-<option value="BEDC">BEDC - Edo, Delta, Ekiti, Ondo</option>
-<option value="YEDC">YEDC - Adamawa, Borno, Taraba, Yobe</option>
-</select>
-
-<label for="disco">2. Select Your Band:</label>
-<select id="disco">
-<!-- Populated by JavaScript -->
-</select>
-
-<label for="amount">3. Enter Amount in Naira (₦):</label>
-<input type="number" id="amount" placeholder="e.g. 5000" min="100">
-
-<button onclick="calcUnits()">Calculate My Units</button>
-
-<div id="result"></div>
-
-<div class="note">
-<strong>How it works:</strong> Amount ÷ 1.075 ÷ Tariff = Units. 7.5% VAT removed first per NERC rules. Tariffs updated June 2026. Band A = 20+ hrs/day, Band B = 16-20 hrs, Band C = 12-16 hrs, Band D = 8-12 hrs, Band E = 4-8 hrs. If you don’t know your Band, check your last token receipt.
-</div>
-
-<div class="footer">
-<p>Free calculator for all Nigerians. Share with your street WhatsApp group.</p>
-</div>
-
 <script>
 const tariffs = {
 EEDC: { A: 225, B: 68, C: 56, D: 40, E: 35 },
@@ -74,17 +13,29 @@ BEDC: { A: 225, B: 62, C: 54, D: 39, E: 34 },
 YEDC: { A: 225, B: 59, C: 51, D: 37, E: 33 }
 };
 
-const bandHours = { A: "20+ hours", B: "16-20 hours", C: "12-16 hours", D: "8-12 hours", E: "4-8 hours" };
+const bandHours = {
+A: "20+ hours",
+B: "16-20 hours",
+C: "12-16 hours",
+D: "8-12 hours",
+E: "4-8 hours"
+};
 
 function updateBands() {
 const company = document.getElementById("discoCompany").value;
 const bandSelect = document.getElementById("disco");
+
 bandSelect.innerHTML = "";
 
 for (const band in tariffs[company]) {
 const option = document.createElement("option");
-option.value = tariffs[company];
-option.text = `Band ${band} - ₦${tariffs[company]}/kWh | ${bandHours} daily`;
+
+// ✅ FIXED: correct value
+option.value = tariffs[company][band];
+
+// ✅ FIXED: correct text
+option.text = `Band ${band} - ₦${tariffs[company][band]}/kWh | ${bandHours[band]} daily`;
+
 bandSelect.appendChild(option);
 }
 }
@@ -93,24 +44,29 @@ function calcUnits() {
 const rate = parseFloat(document.getElementById("disco").value);
 const amount = parseFloat(document.getElementById("amount").value);
 const resultDiv = document.getElementById("result");
-const company = document.getElementById("discoCompany").options[document.getElementById("discoCompany").selectedIndex].text;
+
+const companyText = document.getElementById("discoCompany")
+.options[document.getElementById("discoCompany").selectedIndex].text;
 
 if (!amount || amount < 100) {
 alert("Please enter amount from ₦100 and above");
 return;
 }
 
-const units = (amount / 1.075 / rate).toFixed(2);
-resultDiv.style.display = "block";
-resultDiv.innerHTML = `For <strong>${company}</strong><br>You will get approximately <strong>${units} units/kWh</strong>`;
+if (!rate) {
+alert("Please select a band");
+return;
 }
 
-// Load EEDC by default
+const units = (amount / 1.075 / rate).toFixed(2);
+
+resultDiv.style.display = "block";
+resultDiv.innerHTML = `
+For <strong>${companyText}</strong><br>
+You will get approximately <strong>${units} units/kWh</strong>
+`;
+}
+
+// Load default
 window.onload = updateBands;
 </script>
-
-<!-- Adsterra Ads -->
-<script src="https://pl29656524.effectivecpmnetwork.com/5b/d9/e9/5bd9e912776abf4763c2795a3ff0a87c.js"></script>
-
-</body>
-</html>
