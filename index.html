@@ -17,6 +17,48 @@ button:hover {background: #1557b0;}
 .note {font-size: 13px; color: #666; margin-top: 20px; line-height: 1.6;}
 .footer {text-align: center; margin-top: 30px; font-size: 14px; color: #666;}
 label {font-weight: 600; display: block; margin-top: 15px;}
+/* Ad Popup Styles */
+.modal {
+display: none;
+position: fixed;
+z-index: 999;
+left: 0; top: 0;
+width: 100%; height: 100%;
+background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+background-color: #fff;
+margin: 20% auto;
+padding: 20px;
+border-radius: 10px;
+width: 90%;
+max-width: 400px;
+text-align: center;
+position: relative;
+}
+
+.close {
+position: absolute;
+right: 15px;
+top: 5px;
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+color: #888;
+}
+
+.ad-button {
+display: inline-block;
+margin-top: 15px;
+padding: 12px 24px;
+background: #1a73e8;
+color: white;
+text-decoration: none;
+border-radius: 5px;
+font-weight: bold;
+}
+  
 </style>
 </head>
 <body>
@@ -115,10 +157,40 @@ resultDiv.style.display = "block";
 resultDiv.innerHTML = `For <strong>${companyText}</strong><br>You will get approximately <strong>${units} units/kWh</strong>`;
 }
 
-window.onload = updateBands;
+window.onload = function() {
+updateBands(); // Loads your calculator bands
+setTimeout(function() {
+showAd(); // Shows ad popup after 2 seconds
+}, 2000);
+};
 </script>
 
-<script src="https://pl29656524.effectivecpmnetwork.com/5b/d9/e9/5bd9e912776abf4763c2795a3ff0a87c.js"></script>
+<script>
+// Ad Popup Functions
+function showAd() {
+// REPLACE THESE WITH YOUR AD INFO
+document.getElementById('adImage').src = 'https://via.placeholder.com/300x200';
+document.getElementById('adText').innerText = 'This is your ad text. Replace me!';
+document.getElementById('adLink').href = 'https://your-ad-link.com';
 
+document.getElementById('adModal').style.display = 'block';
+}
+
+function closeAd() {
+document.getElementById('adModal').style.display = 'none';
+}
+</script>
+  
+<script src="https://pl29656524.effectivecpmnetwork.com/5b/d9/e9/5bd9e912776abf4763c2795a3ff0a87c.js"></script>
+<!-- Ad Popup Modal -->
+<div id="adModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeAd()">&times;</span>
+<h3>Sponsored</h3>
+<img id="adImage" src="" alt="Ad" style="width:100%; max-width:300px; border-radius:8px;">
+<p id="adText"></p>
+<a id="adLink" href="#" target="_blank" class="ad-button">Learn More</a>
+</div>
+</div>
 </body>
 </html>
