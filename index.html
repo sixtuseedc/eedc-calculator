@@ -88,7 +88,7 @@ bandSelect.innerHTML = "";
 
 for (const band in tariffs[company]) {
 const option = document.createElement("option");
-option.value = tariffs[company];
+option.value = tariffs[company][band];
 option.text = `Band ${band} - ₦${tariffs[company]}/kWh | ${bandHours} daily`;
 bandSelect.appendChild(option);
 }
