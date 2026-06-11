@@ -1,115 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EEDC Calculator 2026 - Check Units & How Many Days ₦2k, ₦5k Will Last | Enugu Electric</title>
-<meta name="description" content="Free EEDC prepaid calculator. Check how many units you get for ₦1000 to ₦10,000 and estimate how many days it will last with fridge, AC, TV. For Enugu, Awka, Abakaliki.">
-
-<style>
-body { font-family: Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 20px; line-height: 1.6; background: #fafafa; }
-h1, h2, h3 { color: #333; }
-input, select, button { padding: 12px; margin: 5px 0; font-size: 16px; width: 100%; box-sizing: border-box; }
-button { background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-button:hover { background: #0056b3; }
-.result { font-weight: bold; color: #28a745; margin-top: 15px; font-size: 18px; }
-.section { margin-top: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: white; }
-.days-section { border: 2px solid #007bff; background: #f8f9ff; }
-label { display: block; margin: 8px 0; }
-input[type="checkbox"] { width: auto; margin-right: 8px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nigeria Electricity Calculator 2026 - Units & Days For EEDC, IKEDC, AEDC, EKEDC | NEPA Bill</title>
+    <meta name="description" content="Free calculator for EEDC, IKEDC, AEDC, EKEDC, IBEDC, PHEDC. Check how many units you get for ₦1k-₦10k and estimate how many days it will last with fridge, AC, TV. Updated June 2026 tariffs.">
+    
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 15px; 
+            line-height: 1.6; 
+            background: #f0f4f8;
+            color: #2c3e50;
+        }
+        h1 { color: #1565c0; text-align: center; margin-bottom: 5px; }
+        h2 { color: #1976d2; border-bottom: 2px solid #1976d2; padding-bottom: 5px; }
+      .subtitle { text-align: center; color: #555; margin-bottom: 25px; }
+      .section { 
+            margin-top: 25px; 
+            padding: 25px; 
+            border-radius: 12px; 
+            background: white; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+      .units-section { border-left: 5px solid #4caf50; }
+      .days-section { border-left: 5px solid #ff9800; background: #fff8e1; }
+      .faq-section { border-left: 5px solid #9c27b0; }
+        input, select, button { 
+            padding: 12px; 
+            margin: 8px 0; 
+            font-size: 16px; 
+            width: 100%; 
+            box-sizing: border-box; 
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        button { 
+            background: #1976d2; 
+            color: white; 
+            border: none; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.2s;
+        }
+        button:hover { background: #1565c0; }
+      .result { 
+            font-weight: bold; 
+            color: #2e7d32; 
+            margin-top: 15px; 
+            font-size: 18px; 
+            padding: 10px;
+            background: #e8f5e9;
+            border-radius: 6px;
+        }
+        label { display: block; margin: 8px 0; cursor: pointer; }
+        input[type="checkbox"] { width: auto; margin-right: 8px; }
+      .share-box { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding: 20px; 
+            background: #e3f2fd; 
+            border-radius: 12px; 
+        }
+      .tag { 
+            display: inline-block; 
+            background: #1976d2; 
+            color: white; 
+            padding: 4px 10px; 
+            border-radius: 20px; 
+            font-size: 12px; 
+            margin: 2px; 
+        }
+        #adsBox {
+            margin: 20px auto; 
+            padding: 15px; 
+            background: #fff3cd; 
+            border: 2px dashed #ffc107; 
+            border-radius: 12px; 
+            text-align: center; 
+            max-width: 600px;
+        }
+        #adsBox a { text-decoration: none; font-weight: bold; font-size: 15px; }
+        #adsBox a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
 
-<h1>EEDC Prepaid Calculator 2026</h1>
-<p>Calculate how many units you’ll get for your money on Enugu Electric + estimate how many days it will last. Updated for Band A-E tariffs.</p>
+    <h1>🇳🇬 Nigeria NEPA Calculator 2026</h1>
+    <p class="subtitle">Check units & days for <span class="tag">EEDC</span> <span class="tag">IKEDC</span> <span class="tag">AEDC</span> <span class="tag">EKEDC</span> <span class="tag">IBEDC</span> <span class="tag">PHEDC</span></p>
 
-<!-- ORIGINAL UNITS CALCULATOR -->
-<div class="section">
-<h2>1. Calculate EEDC Units From Amount</h2>
-<label>Amount (₦): <input type="number" id="amount" placeholder="e.g. 5000"></label>
-<label>Band:
-<select id="band">
-<option value="225">Band A - ₦225/kWh - 20+ hrs/day</option>
-<option value="64.1">Band B - ₦64.1/kWh - 16-20 hrs/day</option>
-<option value="63.7">Band C - ₦63.7/kWh - 12-16 hrs/day</option>
-<option value="63.1">Band D - ₦63.1/kWh - 8-12 hrs/day</option>
-<option value="62.2">Band E - ₦62.2/kWh - 4-8 hrs/day</option>
-</select>
-</label>
-<button onclick="calcUnits()">Calculate My Units</button>
-<h3 class="result" id="unitsResult"></h3>
-<p><small><strong>How it works:</strong> Amount ÷ 1.075 ÷ Tariff = Units. 7.5% VAT removed first per NERC rules. Tariffs updated June 2026.</small></p>
-</div>
+    <!-- ROTATING ADS BOX - CHANGES EVERY 8 SECONDS -->
+    <div id="adsBox">
+        <small style="color: #856404; font-weight: bold;">SPONSORED</small>
+        <div id="adContent" style="margin-top: 8px;">
+            <!-- Ads load here -->
+        </div>
+    </div>
 
-<script>
-function calcUnits(){
-let amount = parseFloat(document.getElementById('amount').value);
-let rate = parseFloat(document.getElementById('band').value);
-if(!amount){alert("Enter amount first"); return;}
-let vat = amount * 0.075;
-let afterVat = amount - vat;
-let units = (afterVat / rate).toFixed(2);
-document.getElementById('unitsResult').innerText = `You will get ~${units} units. VAT deducted: ₦${vat.toFixed(2)}`;
-}
-</script>
+    <script>
+    // ROTATING ADS - REPLACE LINKS WITH YOUR JUMIA/KONGA AFFILIATE LINKS
+    const ads = [
+        {
+            text: "⚡ NEPA Wahala? Get 30,000mAh Power Bank — Free Delivery in Lagos, Abuja, PH!",
+            link: "https://www.jumia.com.ng/power-bank/",
+            color: "#dc3545"
+        },
+        {
+            text: "🔌 Reduce NEPA Bill: Solar Inverter Kit Pay Small Small — 0% Interest!",
+            link: "https://www.konga.com/inverter/", 
+            color: "#28a745"
+        },
+        {
+            text: "💡 LED Bulbs 10-Pack ₦4,500 — Save 80% On Electricity. Buy Now!",
+            link: "https://payporte.com/led-bulbs/",
+            color: "#007bff"
+        }
+    ];
 
-<!-- NEW DAYS CALCULATOR - THIS IS WHAT RANKS FOR "HOW LONG WILL 2K LAST" -->
-<div class="section days-section">
-<h2>2. Bonus: How Many Days Will Your EEDC Units Last?</h2>
-<p><strong>EEDC units mean nothing. Days matter.</strong> Type your units and tick your appliances:</p>
+    let currentAd = 0;
+    function rotateAds() {
+        const ad = ads[currentAd];
+        document.getElementById('adContent').innerHTML = `
+            <a href="${ad.link}" target="_blank" style="color: ${ad.color};">
+                ${ad.text}
+            </a>
+        `;
+        currentAd = (currentAd + 1) % ads.length;
+    }
+    
+    rotateAds();
+    setInterval(rotateAds, 8000);
+    </script>
 
-<label>Units you bought: <input type="number" id="unitsInput" placeholder="e.g. 22"></label>
+    <!-- UNITS CALCULATOR -->
+    <div class="section units-section">
+        <h2>1. Calculate Units From Amount</h2>
+        <label>Amount (₦): <input type="number" id="amount" placeholder="e.g. 5000"></label>
+        <label>Select Your DisCo: 
+            <select id="disco">
+                <option value="225">EEDC - Enugu - Band A ₦225/kWh</option>
+                <option value="225">IKEDC - Ikeja/Lagos - Band A ₦225/kWh</option>
+                <option value="225">AEDC - Abuja - Band A ₦225/kWh</option>
+                <option value="225">EKEDC - Eko/Lagos - Band A ₦225/kWh</option>
+                <option value="225">IBEDC - Ibadan - Band A ₦225/kWh</option>
+                <option value="225">PHEDC - Port Harcourt - Band A ₦225/kWh</option>
+                <option value="64.1">Band B - ₦64.1/kWh - All Discos</option>
+                <option value="63.7">Band C - ₦63.7/kWh - All Discos</option>
+                <option value="63.1">Band D - ₦63.1/kWh - All Discos</option>
+                <option value="62.2">Band E - ₦62.2/kWh - All Discos</option>
+            </select>
+        </label>
+        <button onclick="calcUnits()">Calculate My Units</button>
+        <h3 class="result" id="unitsResult"></h3>
+        <p><small><strong>How it works:</strong> Amount ÷ 1.075 ÷ Tariff = Units. 7.5% VAT removed first per NERC. Tariffs updated June 2026.</small></p>
+    </div>
 
-<b>Tick what you use daily:</b>
-<label><input type="checkbox" class="appliance" value="3.6"> Fridge 24/7 - ~3.6 units/day</label>
-<label><input type="checkbox" class="appliance" value="12"> 1.5HP AC - 8 hours/day - ~12 units/day</label>
-<label><input type="checkbox" class="appliance" value="6"> 1HP AC - 8 hours/day - ~6 units/day</label>
-<label><input type="checkbox" class="appliance" value="0.6"> TV - 6 hours/day - ~0.6 units/day</label>
-<label><input type="checkbox" class="appliance" value="0.36"> 4 LED Bulbs - 6 hours/day - ~0.36 units/day</label>
-<label><input type="checkbox" class="appliance" value="1.2"> Deep Freezer 24/7 - ~1.2 units/day</label>
+    <script>
+    function calcUnits(){
+        let amount = parseFloat(document.getElementById('amount').value);
+        let rate = parseFloat(document.getElementById('disco').value);
+        let discoText = document.getElementById('disco').options[document.getElementById('disco').selectedIndex].text;
+        if(!amount){alert("Enter amount first"); return;}
+        let vat = amount * 0.075;
+        let afterVat = amount - vat;
+        let units = (afterVat / rate).toFixed(2);
+        document.getElementById('unitsResult').innerText = `You will get ~${units} units on ${discoText}. VAT deducted: ₦${vat.toFixed(2)}`;
+    }
+    </script>
 
-<button onclick="calculateDays()">Calculate Days</button>
-<h3 class="result" id="daysResult"></h3>
+    <!-- DAYS CALCULATOR -->
+    <div class="section days-section">
+        <h2>2. Bonus: How Many Days Will Your Units Last?</h2>
+        <p><strong>Units mean nothing. Days matter.</strong> Type your units and tick your appliances:</p>
 
-<script>
-function calculateDays(){
-let units = parseFloat(document.getElementById('unitsInput').value);
-if(!units){alert("Please enter your units first"); return;}
-let dailyUse = 0;
-document.querySelectorAll('.appliance:checked').forEach(app => {
-dailyUse += parseFloat(app.value);
-});
-if(dailyUse==0) dailyUse = 0.5; // basic phone charging + 1 bulb
-let days = (units / dailyUse).toFixed(1);
-document.getElementById('daysResult').innerText = `Your ${units} units will last about ${days} days with selected appliances.`;
-}
-</script>
+        <label>Units you bought: <input type="number" id="unitsInput" placeholder="e.g. 22"></label>
 
-<h4>Real Answers Nigerians Google Daily:</h4>
-<p><b>How long will ₦2,000 EEDC last?</b> On Band A ₦225/kWh = ~8.9 units. With fridge only = ~2.5 days. Fridge + bulbs = ~2.2 days. With 1.5HP AC = ~0.7 days.</p>
-<p><b>How long will ₦5,000 EEDC last?</b> On Band A = ~22.2 units. Fridge + TV + bulbs = ~5 days. Add 1.5HP AC = ~1.4 days.</p>
-<p><b>Why did my 10k finish in 3 days?</b> ₦10,000 = ~44 units on Band A. 1.5HP AC alone uses 12 units/day. 44÷12 = 3.6 days. Na AC dey chop am.</p>
-<p><b>How many units is ₦1,000 EEDC?</b> Band A: ~4.4 units. Band C: ~15.7 units. Big difference!</p>
-</div>
+        <b>Tick what you use daily:</b>
+        <label><input type="checkbox" class="appliance" value="3.6"> Fridge 24/7 - ~3.6 units/day</label>
+        <label><input type="checkbox" class="appliance" value="12"> 1.5HP AC - 8 hours/day - ~12 units/day</label>
+        <label><input type="checkbox" class="appliance" value="6"> 1HP AC - 8 hours/day - ~6 units/day</label>
+        <label><input type="checkbox" class="appliance" value="0.6"> TV - 6 hours/day - ~0.6 units/day</label>
+        <label><input type="checkbox" class="appliance" value="0.36"> 4 LED Bulbs - 6 hours/day - ~0.36 units/day</label>
+        <label><input type="checkbox" class="appliance" value="1.2"> Deep Freezer 24/7 - ~1.2 units/day</label>
 
-<!-- FAQ FOR SEO -->
-<div class="section">
-<h2>3. EEDC Prepaid FAQs 2026</h2>
-<p><b>What is EEDC Band A tariff 2026?</b> ₦225 per kWh. You get 20+ hours of light daily.</p>
-<p><b>Why is EEDC deducting money from my recharge?</b> 7.5% VAT is deducted first per NERC. ₦10,000 recharge = ₦750 VAT, ₦9,250 for units.</p>
-<p><b>How to reduce EEDC bill?</b> Switch off AC when not home. Use LED bulbs. Defrost freezer. Moving from Band A to Band C saves 70%.</p>
-<p><b>EEDC customer care number?</b> 0815 082 6060 or 0815 082 6061. For Enugu, Awka, Abakaliki, Umuahia.</p>
-</div>
+        <button onclick="calculateDays()">Calculate Days</button>
+        <h3 class="result" id="daysResult"></h3>
 
-<!-- SHARE SECTION - NO MORE BITLY -->
-<div style="text-align:center; margin-top:40px; padding:20px; background:#f5f5f5; border-radius:8px;">
-<p style="margin:0; font-size:16px; color:#333;">
-<strong>Share this calculator:</strong>
-<a href="https://sixtuseedc.github.io/eedc-calculator/" style="color:#0066cc; text-decoration:none;">sixtuseedc.github.io/eedc-calculator/</a>
-</p>
-<p style="margin:10px 0 0 0; font-size:14px; color:#666;">Built by Sixtus from Port Harcourt for EEDC customers 🇳🇬</p>
-</div>
+        <script>
+        function calculateDays(){
+            let units = parseFloat(document.getElementById('unitsInput').value);
+            if(!units){alert("Please enter your units first"); return;}
+            let dailyUse = 0;
+            document.querySelectorAll('.appliance:checked').forEach(app => {
+                dailyUse += parseFloat(app.value);
+            });
+            if(dailyUse==0) dailyUse = 0.5; 
+            let days = (units / dailyUse).toFixed(1);
+            document.getElementById('daysResult').innerText = `Your ${units} units will last about ${days} days with selected appliances.`;
+        }
+        </script>
+
+        <h4>Real Answers Nigerians Google Daily:</h4>
+        <p><b>How long will ₦2,000 NEPA last?</b> Band A = ~8.9 units. Fridge only = ~2.5 days. Fridge + AC = ~0.7 days.</p>
+        <p><b>How long will ₦5,000 NEPA last?</b> Band A = ~22.2 units. Fridge + TV + bulbs = ~5 days. Add 1.5HP AC = ~1.4 days.</p>
+        <p><b>Why did my 10k finish in 3 days?</b> ₦10,000 = ~44 units on Band A. 1.5HP AC uses 12 units/day. 44÷12 = 3.6 days. Na AC dey chop am.</p>
+    </div>
+
+    <!-- FAQ FOR SEO -->
+    <div class="section faq-section">
+        <h2>3. NEPA Prepaid FAQs 2026 - All Discos</h2>
+        <p><b>What is Band A tariff 2026?</b> ₦225 per kWh for EEDC, IKEDC, AEDC, EKEDC, IBEDC, PHEDC. You get 20+ hours light daily.</p>
+        <p><b>Why is NEPA deducting money from my recharge?</b> 7.5% VAT is deducted first per NERC. ₦10,000 recharge = ₦750 VAT, ₦9,250 for units.</p>
+        <p><b>How to reduce NEPA bill?</b> Switch off AC when not home. Use LED bulbs. Defrost freezer. Moving from Band A to Band C saves 70%.</p>
+        <p><b>IKEDC vs EEDC which is cheaper?</b> Tariffs are same for same Band. Band A is ₦225/kWh nationwide. Only difference is hours of light.</p>
+        <p><b>Customer care numbers?</b> EEDC: 0815 082 6060. IKEDC: 0700 022 5543. AEDC: 0815 018 0080. EKEDC: 0700 806 3526.</p>
+    </div>
+
+    <!-- SHARE SECTION - BITLY + ANONYMOUS -->
+    <div class="share-box">
+        <p style="margin:0; font-size:16px; color:#333;">
+            <strong>Share this calculator:</strong><br>
+            <a href="https://bit.ly/EEDCcalculator" style="color:#0066cc; text-decoration:none; font-weight:bold;">bit.ly/EEDCcalculator</a>
+        </p>
+        <p style="margin:10px 0 0 0; font-size:14px; color:#666;">Built for Nigerians to understand their electricity bills 🇳🇬</p>
+    </div>
 
 </body>
 </html>
