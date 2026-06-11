@@ -4,153 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nigeria Electricity Calculator 2026 - Units & Days For EEDC, IKEDC, AEDC, EKEDC | NEPA Bill</title>
-    <meta name="description" content="Free calculator for EEDC, IKEDC, AEDC, EKEDC, IBEDC, PHEDC. Check how many units you get for ₦1k-₦10k and estimate how many days it will last with fridge, AC, TV. Updated June 2026 tariffs.">
+    <meta name="description" content="Free calculator for EEDC, IKEDC, AEDC, EKEDC, IBEDC, PHEDC. Check how many units you get for ₦1k-₦10k and estimate how many days it will last. Band A B C D E tariffs June 2026.">
+    <link rel="canonical" href="https://sixtuseedc.github.io/eedc-calculator/" />
     
     <style>
         body { 
             font-family: 'Segoe UI', Arial, sans-serif; 
-            max-width: 800px; 
+            max-width: 850px; 
             margin: 0 auto; 
             padding: 15px; 
             line-height: 1.6; 
-            background: #f0f4f8;
             color: #2c3e50;
+            /* LIVELY BACKGROUND - HIGH TENSION WIRES */
+            background: linear-gradient(rgba(13, 71, 161, 0.85), rgba(13, 71, 161, 0.85)), 
+                        url('https://images.unsplash.com/photo-1624397640148-949b1732f0e8?q=80&w=2070') center/cover fixed;
         }
-        h1 { color: #1565c0; text-align: center; margin-bottom: 5px; }
-        h2 { color: #1976d2; border-bottom: 2px solid #1976d2; padding-bottom: 5px; }
-      .subtitle { text-align: center; color: #555; margin-bottom: 25px; }
-      .section { 
+        h1 { 
+            color: #fff; 
+            text-align: center; 
+            margin-bottom: 5px; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 2.2em;
+        }
+        h2 { 
+            color: #1976d2; 
+            border-bottom: 3px solid #ff9800; 
+            padding-bottom: 8px; 
+            margin-top: 0;
+        }
+     .subtitle { 
+            text-align: center; 
+            color: #fff; 
+            margin-bottom: 25px; 
+            font-size: 1.1em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+     .section { 
             margin-top: 25px; 
-            padding: 25px; 
-            border-radius: 12px; 
-            background: white; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 30px; 
+            border-radius: 15px; 
+            background: rgba(255, 255, 255, 0.97); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
         }
-      .units-section { border-left: 5px solid #4caf50; }
-      .days-section { border-left: 5px solid #ff9800; background: #fff8e1; }
-      .faq-section { border-left: 5px solid #9c27b0; }
+     .units-section { border-left: 6px solid #4caf50; }
+     .days-section { border-left: 6px solid #ff9800; background: rgba(255, 248, 225, 0.97); }
+     .faq-section { border-left: 6px solid #9c27b0; }
         input, select, button { 
-            padding: 12px; 
+            padding: 14px; 
             margin: 8px 0; 
             font-size: 16px; 
             width: 100%; 
             box-sizing: border-box; 
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        input:focus, select:focus { 
+            border-color: #1976d2; 
+            outline: none;
+            box-shadow: 0 0 8px rgba(25, 118, 210, 0.3);
         }
         button { 
-            background: #1976d2; 
+            background: linear-gradient(135deg, #1976d2, #1565c0); 
             color: white; 
             border: none; 
             font-weight: bold; 
             cursor: pointer; 
-            transition: 0.2s;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        button:hover { background: #1565c0; }
-      .result { 
+        button:hover { 
+            background: linear-gradient(135deg, #1565c0, #0d47a1); 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(21, 101, 192, 0.4);
+        }
+     .result { 
             font-weight: bold; 
             color: #2e7d32; 
             margin-top: 15px; 
-            font-size: 18px; 
-            padding: 10px;
+            font-size: 19px; 
+            padding: 15px;
             background: #e8f5e9;
-            border-radius: 6px;
+            border-radius: 8px;
+            border-left: 5px solid #2e7d32;
         }
-        label { display: block; margin: 8px 0; cursor: pointer; }
-        input[type="checkbox"] { width: auto; margin-right: 8px; }
-      .share-box { 
+        label { display: block; margin: 10px 0; cursor: pointer; font-weight: 500; }
+        input[type="checkbox"] { width: auto; margin-right: 10px; transform: scale(1.2); }
+     .share-box { 
             text-align: center; 
             margin-top: 40px; 
-            padding: 20px; 
-            background: #e3f2fd; 
-            border-radius: 12px; 
+            padding: 25px; 
+            background: rgba(227, 242, 253, 0.95); 
+            border-radius: 15px; 
         }
-      .tag { 
+     .tag { 
             display: inline-block; 
-            background: #1976d2; 
+            background: #ff9800; 
             color: white; 
-            padding: 4px 10px; 
+            padding: 5px 12px; 
             border-radius: 20px; 
-            font-size: 12px; 
-            margin: 2px; 
+            font-size: 13px; 
+            margin: 3px; 
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         #adsBox {
             margin: 20px auto; 
-            padding: 15px; 
-            background: #fff3cd; 
-            border: 2px dashed #ffc107; 
-            border-radius: 12px; 
+            padding: 18px; 
+            background: rgba(255, 243, 205, 0.95); 
+            border: 3px dashed #ffc107; 
+            border-radius: 15px; 
             text-align: center; 
-            max-width: 600px;
+            max-width: 650px;
         }
-        #adsBox a { text-decoration: none; font-weight: bold; font-size: 15px; }
+        #adsBox a { text-decoration: none; font-weight: bold; font-size: 16px; }
         #adsBox a:hover { text-decoration: underline; }
+       .power-icon { font-size: 1.5em; margin-right: 8px; }
     </style>
 </head>
 <body>
 
-    <h1>🇳🇬 Nigeria NEPA Calculator 2026</h1>
-    <p class="subtitle">Check units & days for <span class="tag">EEDC</span> <span class="tag">IKEDC</span> <span class="tag">AEDC</span> <span class="tag">EKEDC</span> <span class="tag">IBEDC</span> <span class="tag">PHEDC</span></p>
+    <h1>⚡ Nigeria NEPA Calculator 2026 ⚡</h1>
+    <p class="subtitle">Check units & days for <span class="tag">EEDC</span> <span class="tag">IKEDC</span> <span class="tag">AEDC</span> <span class="tag">EKEDC</span> <span class="tag">IBEDC</span> <span class="tag">PHEDC</span> | <span class="tag">Band A-E</span></p>
 
-    <!-- ROTATING ADS BOX - CHANGES EVERY 8 SECONDS -->
+    <!-- ROTATING ADS BOX -->
     <div id="adsBox">
-        <small style="color: #856404; font-weight: bold;">SPONSORED</small>
-        <div id="adContent" style="margin-top: 8px;">
-            <!-- Ads load here -->
-        </div>
+        <small style="color: #856404; font-weight: bold;">💰 SPONSORED</small>
+        <div id="adContent" style="margin-top: 8px;"></div>
     </div>
 
     <script>
-    // ROTATING ADS - REPLACE LINKS WITH YOUR JUMIA/KONGA AFFILIATE LINKS
     const ads = [
-        {
-            text: "⚡ NEPA Wahala? Get 30,000mAh Power Bank — Free Delivery in Lagos, Abuja, PH!",
-            link: "https://www.jumia.com.ng/power-bank/",
-            color: "#dc3545"
-        },
-        {
-            text: "🔌 Reduce NEPA Bill: Solar Inverter Kit Pay Small Small — 0% Interest!",
-            link: "https://www.konga.com/inverter/", 
-            color: "#28a745"
-        },
-        {
-            text: "💡 LED Bulbs 10-Pack ₦4,500 — Save 80% On Electricity. Buy Now!",
-            link: "https://payporte.com/led-bulbs/",
-            color: "#007bff"
-        }
+        { text: "⚡ NEPA Wahala? Get 30,000mAh Power Bank — Free Delivery!", link: "https://www.jumia.com.ng/power-bank/", color: "#dc3545" },
+        { text: "🔌 Reduce NEPA Bill: Solar Inverter Kit Pay Small Small — 0% Interest!", link: "https://www.konga.com/inverter/", color: "#28a745" },
+        { text: "💡 LED Bulbs 10-Pack ₦4,500 — Save 80% On Electricity. Buy Now!", link: "https://payporte.com/led-bulbs/", color: "#007bff" }
     ];
-
     let currentAd = 0;
     function rotateAds() {
         const ad = ads[currentAd];
-        document.getElementById('adContent').innerHTML = `
-            <a href="${ad.link}" target="_blank" style="color: ${ad.color};">
-                ${ad.text}
-            </a>
-        `;
+        document.getElementById('adContent').innerHTML = `<a href="${ad.link}" target="_blank" style="color: ${ad.color};">${ad.text}</a>`;
         currentAd = (currentAd + 1) % ads.length;
     }
-    
     rotateAds();
     setInterval(rotateAds, 8000);
     </script>
 
-    <!-- UNITS CALCULATOR -->
+    <!-- UNITS CALCULATOR - ALL BANDS CONFIRMED -->
     <div class="section units-section">
-        <h2>1. Calculate Units From Amount</h2>
+        <h2><span class="power-icon">🔢</span>Calculate Units From Amount</h2>
         <label>Amount (₦): <input type="number" id="amount" placeholder="e.g. 5000"></label>
-        <label>Select Your DisCo: 
+        <label>Select Your DisCo & Band: 
             <select id="disco">
-                <option value="225">EEDC - Enugu - Band A ₦225/kWh</option>
-                <option value="225">IKEDC - Ikeja/Lagos - Band A ₦225/kWh</option>
-                <option value="225">AEDC - Abuja - Band A ₦225/kWh</option>
-                <option value="225">EKEDC - Eko/Lagos - Band A ₦225/kWh</option>
-                <option value="225">IBEDC - Ibadan - Band A ₦225/kWh</option>
-                <option value="225">PHEDC - Port Harcourt - Band A ₦225/kWh</option>
-                <option value="64.1">Band B - ₦64.1/kWh - All Discos</option>
-                <option value="63.7">Band C - ₦63.7/kWh - All Discos</option>
-                <option value="63.1">Band D - ₦63.1/kWh - All Discos</option>
-                <option value="62.2">Band E - ₦62.2/kWh - All Discos</option>
+                <optgroup label="Band A - ₦225/kWh - 20+ hrs/day">
+                    <option value="225">EEDC - Enugu</option>
+                    <option value="225">IKEDC - Ikeja/Lagos</option>
+                    <option value="225">AEDC - Abuja</option>
+                    <option value="225">EKEDC - Eko/Lagos</option>
+                    <option value="225">IBEDC - Ibadan</option>
+                    <option value="225">PHEDC - Port Harcourt</option>
+                </optgroup>
+                <optgroup label="Other Bands - All Discos">
+                    <option value="64.1">Band B - ₦64.1/kWh - 16-20 hrs/day</option>
+                    <option value="63.7">Band C - ₦63.7/kWh - 12-16 hrs/day</option>
+                    <option value="63.1">Band D - ₦63.1/kWh - 8-12 hrs/day</option>
+                    <option value="62.2">Band E - ₦62.2/kWh - 4-8 hrs/day</option>
+                </optgroup>
             </select>
         </label>
         <button onclick="calcUnits()">Calculate My Units</button>
@@ -171,9 +191,9 @@
     }
     </script>
 
-    <!-- DAYS CALCULATOR -->
+    <!-- DAYS CALCULATOR - NO MORE "BONUS" - JUST THE QUESTION -->
     <div class="section days-section">
-        <h2>2. Bonus: How Many Days Will Your Units Last?</h2>
+        <h2><span class="power-icon">⏰</span>How Many Days Will Your Units Last?</h2>
         <p><strong>Units mean nothing. Days matter.</strong> Type your units and tick your appliances:</p>
 
         <label>Units you bought: <input type="number" id="unitsInput" placeholder="e.g. 22"></label>
@@ -206,24 +226,24 @@
         <h4>Real Answers Nigerians Google Daily:</h4>
         <p><b>How long will ₦2,000 NEPA last?</b> Band A = ~8.9 units. Fridge only = ~2.5 days. Fridge + AC = ~0.7 days.</p>
         <p><b>How long will ₦5,000 NEPA last?</b> Band A = ~22.2 units. Fridge + TV + bulbs = ~5 days. Add 1.5HP AC = ~1.4 days.</p>
-        <p><b>Why did my 10k finish in 3 days?</b> ₦10,000 = ~44 units on Band A. 1.5HP AC uses 12 units/day. 44÷12 = 3.6 days. Na AC dey chop am.</p>
+        <p><b>Why did my 10k finish in 3 days?</b> ₦10,000 = ~44 units on Band A. 1.5HP AC uses 12 units/day. 44÷12 = 3.6 days.</p>
     </div>
 
     <!-- FAQ FOR SEO -->
     <div class="section faq-section">
-        <h2>3. NEPA Prepaid FAQs 2026 - All Discos</h2>
-        <p><b>What is Band A tariff 2026?</b> ₦225 per kWh for EEDC, IKEDC, AEDC, EKEDC, IBEDC, PHEDC. You get 20+ hours light daily.</p>
-        <p><b>Why is NEPA deducting money from my recharge?</b> 7.5% VAT is deducted first per NERC. ₦10,000 recharge = ₦750 VAT, ₦9,250 for units.</p>
-        <p><b>How to reduce NEPA bill?</b> Switch off AC when not home. Use LED bulbs. Defrost freezer. Moving from Band A to Band C saves 70%.</p>
-        <p><b>IKEDC vs EEDC which is cheaper?</b> Tariffs are same for same Band. Band A is ₦225/kWh nationwide. Only difference is hours of light.</p>
+        <h2><span class="power-icon">❓</span>NEPA Prepaid FAQs 2026 - All Discos & Bands</h2>
+        <p><b>What is Band A tariff 2026?</b> ₦225 per kWh for EEDC, IKEDC, AEDC, EKEDC, IBEDC, PHEDC. 20+ hours light daily.</p>
+        <p><b>What is Band B/C/D/E tariff?</b> Band B: ₦64.1 | Band C: ₦63.7 | Band D: ₦63.1 | Band E: ₦62.2 per kWh. Same across all Discos.</p>
+        <p><b>Why is NEPA deducting money?</b> 7.5% VAT is deducted first per NERC. ₦10,000 = ₦750 VAT, ₦9,250 for units.</p>
+        <p><b>How to reduce NEPA bill?</b> Switch off AC when not home. Use LED bulbs. Moving from Band A to Band C saves 70%.</p>
         <p><b>Customer care numbers?</b> EEDC: 0815 082 6060. IKEDC: 0700 022 5543. AEDC: 0815 018 0080. EKEDC: 0700 806 3526.</p>
     </div>
 
-    <!-- SHARE SECTION - BITLY + ANONYMOUS -->
+    <!-- SHARE SECTION - BITLY FOR ANONYMITY -->
     <div class="share-box">
-        <p style="margin:0; font-size:16px; color:#333;">
+        <p style="margin:0; font-size:17px; color:#333;">
             <strong>Share this calculator:</strong><br>
-            <a href="https://bit.ly/EEDCcalculator" style="color:#0066cc; text-decoration:none; font-weight:bold;">bit.ly/EEDCcalculator</a>
+            <a href="https://bit.ly/EEDCcalculator" style="color:#0066cc; text-decoration:none; font-weight:bold; font-size:18px;">bit.ly/EEDCcalculator</a>
         </p>
         <p style="margin:10px 0 0 0; font-size:14px; color:#666;">Built for Nigerians to understand their electricity bills 🇳🇬</p>
     </div>
