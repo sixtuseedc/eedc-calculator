@@ -15,7 +15,6 @@
             padding: 15px; 
             line-height: 1.6; 
             color: #2c3e50;
-            /* LIVELY BACKGROUND - HIGH TENSION WIRES */
             background: linear-gradient(rgba(13, 71, 161, 0.85), rgba(13, 71, 161, 0.85)), 
                         url('https://images.unsplash.com/photo-1624397640148-949b1732f0e8?q=80&w=2070') center/cover fixed;
         }
@@ -32,14 +31,14 @@
             padding-bottom: 8px; 
             margin-top: 0;
         }
-     .subtitle { 
+   .subtitle { 
             text-align: center; 
             color: #fff; 
             margin-bottom: 25px; 
             font-size: 1.1em;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
-     .section { 
+   .section { 
             margin-top: 25px; 
             padding: 30px; 
             border-radius: 15px; 
@@ -47,9 +46,9 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             backdrop-filter: blur(5px);
         }
-     .units-section { border-left: 6px solid #4caf50; }
-     .days-section { border-left: 6px solid #ff9800; background: rgba(255, 248, 225, 0.97); }
-     .faq-section { border-left: 6px solid #9c27b0; }
+   .units-section { border-left: 6px solid #4caf50; }
+   .days-section { border-left: 6px solid #ff9800; background: rgba(255, 248, 225, 0.97); }
+   .faq-section { border-left: 6px solid #9c27b0; }
         input, select, button { 
             padding: 14px; 
             margin: 8px 0; 
@@ -80,7 +79,7 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(21, 101, 192, 0.4);
         }
-     .result { 
+   .result { 
             font-weight: bold; 
             color: #2e7d32; 
             margin-top: 15px; 
@@ -92,14 +91,14 @@
         }
         label { display: block; margin: 10px 0; cursor: pointer; font-weight: 500; }
         input[type="checkbox"] { width: auto; margin-right: 10px; transform: scale(1.2); }
-     .share-box { 
+   .share-box { 
             text-align: center; 
             margin-top: 40px; 
             padding: 25px; 
             background: rgba(227, 242, 253, 0.95); 
             border-radius: 15px; 
         }
-     .tag { 
+   .tag { 
             display: inline-block; 
             background: #ff9800; 
             color: white; 
@@ -121,7 +120,7 @@
         }
         #adsBox a { text-decoration: none; font-weight: bold; font-size: 16px; }
         #adsBox a:hover { text-decoration: underline; }
-       .power-icon { font-size: 1.5em; margin-right: 8px; }
+   .power-icon { font-size: 1.5em; margin-right: 8px; }
     </style>
 </head>
 <body>
@@ -151,25 +150,53 @@
     setInterval(rotateAds, 8000);
     </script>
 
-    <!-- UNITS CALCULATOR - ALL BANDS CONFIRMED -->
+    <!-- UNITS CALCULATOR - ALL BANDS SHOW DISCO NAME -->
     <div class="section units-section">
         <h2><span class="power-icon">🔢</span>Calculate Units From Amount</h2>
         <label>Amount (₦): <input type="number" id="amount" placeholder="e.g. 5000"></label>
         <label>Select Your DisCo & Band: 
             <select id="disco">
-                <optgroup label="Band A - ₦225/kWh - 20+ hrs/day">
-                    <option value="225">EEDC - Enugu</option>
-                    <option value="225">IKEDC - Ikeja/Lagos</option>
-                    <option value="225">AEDC - Abuja</option>
-                    <option value="225">EKEDC - Eko/Lagos</option>
-                    <option value="225">IBEDC - Ibadan</option>
-                    <option value="225">PHEDC - Port Harcourt</option>
+                <optgroup label="EEDC - Enugu Electric">
+                    <option value="225">EEDC Band A - ₦225/kWh - 20+ hrs/day</option>
+                    <option value="64.1">EEDC Band B - ₦64.1/kWh - 16-20 hrs/day</option>
+                    <option value="63.7">EEDC Band C - ₦63.7/kWh - 12-16 hrs/day</option>
+                    <option value="63.1">EEDC Band D - ₦63.1/kWh - 8-12 hrs/day</option>
+                    <option value="62.2">EEDC Band E - ₦62.2/kWh - 4-8 hrs/day</option>
                 </optgroup>
-                <optgroup label="Other Bands - All Discos">
-                    <option value="64.1">Band B - ₦64.1/kWh - 16-20 hrs/day</option>
-                    <option value="63.7">Band C - ₦63.7/kWh - 12-16 hrs/day</option>
-                    <option value="63.1">Band D - ₦63.1/kWh - 8-12 hrs/day</option>
-                    <option value="62.2">Band E - ₦62.2/kWh - 4-8 hrs/day</option>
+                <optgroup label="IKEDC - Ikeja Electric">
+                    <option value="225">IKEDC Band A - ₦225/kWh - 20+ hrs/day</option>
+                    <option value="64.1">IKEDC Band B - ₦64.1/kWh - 16-20 hrs/day</option>
+                    <option value="63.7">IKEDC Band C - ₦63.7/kWh - 12-16 hrs/day</option>
+                    <option value="63.1">IKEDC Band D - ₦63.1/kWh - 8-12 hrs/day</option>
+                    <option value="62.2">IKEDC Band E - ₦62.2/kWh - 4-8 hrs/day</option>
+                </optgroup>
+                <optgroup label="AEDC - Abuja Electric">
+                    <option value="225">AEDC Band A - ₦225/kWh - 20+ hrs/day</option>
+                    <option value="64.1">AEDC Band B - ₦64.1/kWh - 16-20 hrs/day</option>
+                    <option value="63.7">AEDC Band C - ₦63.7/kWh - 12-16 hrs/day</option>
+                    <option value="63.1">AEDC Band D - ₦63.1/kWh - 8-12 hrs/day</option>
+                    <option value="62.2">AEDC Band E - ₦62.2/kWh - 4-8 hrs/day</option>
+                </optgroup>
+                <optgroup label="EKEDC - Eko Electric">
+                    <option value="225">EKEDC Band A - ₦225/kWh - 20+ hrs/day</option>
+                    <option value="64.1">EKEDC Band B - ₦64.1/kWh - 16-20 hrs/day</option>
+                    <option value="63.7">EKEDC Band C - ₦63.7/kWh - 12-16 hrs/day</option>
+                    <option value="63.1">EKEDC Band D - ₦63.1/kWh - 8-12 hrs/day</option>
+                    <option value="62.2">EKEDC Band E - ₦62.2/kWh - 4-8 hrs/day</option>
+                </optgroup>
+                <optgroup label="IBEDC - Ibadan Electric">
+                    <option value="225">IBEDC Band A - ₦225/kWh - 20+ hrs/day</option>
+                    <option value="64.1">IBEDC Band B - ₦64.1/kWh - 16-20 hrs/day</option>
+                    <option value="63.7">IBEDC Band C - ₦63.7/kWh - 12-16 hrs/day</option>
+                    <option value="63.1">IBEDC Band D - ₦63.1/kWh - 8-12 hrs/day</option>
+                    <option value="62.2">IBEDC Band E - ₦62.2/kWh - 4-8 hrs/day</option>
+                </optgroup>
+                <optgroup label="PHEDC - Port Harcourt Electric">
+                    <option value="225">PHEDC Band A - ₦225/kWh - 20+ hrs/day</option>
+                    <option value="64.1">PHEDC Band B - ₦64.1/kWh - 16-20 hrs/day</option>
+                    <option value="63.7">PHEDC Band C - ₦63.7/kWh - 12-16 hrs/day</option>
+                    <option value="63.1">PHEDC Band D - ₦63.1/kWh - 8-12 hrs/day</option>
+                    <option value="62.2">PHEDC Band E - ₦62.2/kWh - 4-8 hrs/day</option>
                 </optgroup>
             </select>
         </label>
@@ -191,7 +218,7 @@
     }
     </script>
 
-    <!-- DAYS CALCULATOR - NO MORE "BONUS" - JUST THE QUESTION -->
+    <!-- DAYS CALCULATOR - REMOVED "BONUS" -->
     <div class="section days-section">
         <h2><span class="power-icon">⏰</span>How Many Days Will Your Units Last?</h2>
         <p><strong>Units mean nothing. Days matter.</strong> Type your units and tick your appliances:</p>
